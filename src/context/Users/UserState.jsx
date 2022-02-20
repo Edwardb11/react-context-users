@@ -1,15 +1,18 @@
-import axios from "axios";
 import React, { useReducer } from "react";
+import axios from "axios";
+
 import UserContext from "./UserContext";
 import UserReducer from "./UserReducer";
 
-const UserState = () => {
+const UserState = (props) => {
   const initialState = {
     users: [],
     selectedUser: null,
   };
+
   const [state, dispatch] = useReducer(UserReducer, initialState);
-  const getUser = async () => {
+
+  const getUsers = async () => {
     const res = await axios.get("https://reqres.in/api/users");
     console.log(res);
   };
@@ -17,17 +20,16 @@ const UserState = () => {
     const res = await axios.get(`https://reqres.in/api/users/${id}`);
     console.log(res);
   };
+
   return (
-    //   le pasamos en el provide como value a que pueden acceder los elementos hijos
     <UserContext.Provider
       value={{
-        user: state.users,
+        users: state.users,
         selectedUser: state.selectedUser,
-        getUser,
+        getUsers,
         getProfile,
       }}
     >
-      {/* Cualquier componente que este dentro de UserState puede hacer uso de todo el estado definido  */}
       {props.children}
     </UserContext.Provider>
   );
