@@ -1,16 +1,18 @@
-import './App.css'
-import Profile from './components/Profile'
-import UserList from './components/UserList'
+import "./App.css";
+// Componente
+import Profile from "./components/Profile";
+import UserList from "./components/UserList";
+
+// context
+import UserState from "./context/Users/UserState";
 
 function App() {
-
   return (
-  <>
-  <UserList></UserList>
-  <Profile></Profile>
-  </>
-    )
-
+    <UserState>
+      <UserList></UserList>
+      <Profile></Profile>
+    </UserState>
+  );
 }
 
-export default App
+export default App;

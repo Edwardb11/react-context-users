@@ -19,7 +19,7 @@ const UserState = () => {
   };
   return (
     //   le pasamos en el provide como value a que pueden acceder los elementos hijos
-    <UserContext.Provide
+    <UserContext.Provider
       value={{
         user: state.users,
         selectedUser: state.selectedUser,
@@ -29,7 +29,7 @@ const UserState = () => {
     >
       {/* Cualquier componente que este dentro de UserState puede hacer uso de todo el estado definido  */}
       {props.children}
-    </UserContext.Provide>
+    </UserContext.Provider>
   );
 };
 
