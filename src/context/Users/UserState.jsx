@@ -14,11 +14,17 @@ const UserState = (props) => {
 
   const getUsers = async () => {
     const res = await axios.get("https://reqres.in/api/users");
-    console.log(res);
+    dispatch({
+      type:'GET_USERS',
+      data:res.data.data
+    })
   };
   const getProfile = async (id) => {
     const res = await axios.get(`https://reqres.in/api/users/${id}`);
-    console.log(res);
+    dispatch({
+      type:'GET_PROFILE',
+      data:res.data.data
+    })
   };
 
   return (
